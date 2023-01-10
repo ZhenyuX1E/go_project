@@ -7,7 +7,7 @@ all: tools clean build
 # ==============================================================================
 # Build options
 
-ROOT_PACKAGE=~/workspace/go/scaffold/apiserver
+ROOT_PACKAGE=~/Desktop/study/go/scaffold/apiserver
 VERSION_PACKAGE=github.com/rebirthmonkey/go/pkg/version
 
 # ==============================================================================

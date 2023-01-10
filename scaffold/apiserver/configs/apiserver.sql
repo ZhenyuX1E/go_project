@@ -149,3 +149,24 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
+DROP TABLE IF EXISTS `question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `question` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `instanceID` varchar(32) DEFAULT NULL,
+  `name` varchar(45) NOT NULL,
+  `status` int(1) DEFAULT 1 COMMENT '1:可用，0:不可用',
+  `studentname` varchar(255) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `extendShadow` longtext DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `instanceID_UNIQUE` (`instanceID`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+LOCK TABLES `question` WRITE;
+/*!40000 ALTER TABLE `policy` DISABLE KEYS */;
+/*!40000 ALTER TABLE `policy` ENABLE KEYS */;
+UNLOCK TABLES;

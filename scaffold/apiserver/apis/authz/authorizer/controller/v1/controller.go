@@ -9,18 +9,27 @@ import (
 
 	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/repo"
 	srv "github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/service/v1"
+	questionrepo "go_project/scaffold/apiserver/apis/authz/question/repo"
+	questionsrv "go_project/scaffold/apiserver/apis/authz/question/service/v1"
 )
 
 type Controller interface {
 	Authorize(c *gin.Context)
+	Create(c *gin.Context)
+	Delete(c *gin.Context)
+	Update(c *gin.Context)
+	Get(c *gin.Context)
+	List(c *gin.Context)
 }
 
 type controller struct {
 	srv srv.Service
+	questionsrv questionsrv.Service
 }
 
-func NewController(repo repo.Repo) Controller {
+func NewController(repo repo.Repo, questionrepo questionrepo.Repo) Controller {
 	return &controller{
 		srv: srv.NewService(repo),
+		questionsrv: questionsrv.NewService(questionrepo),
 	}
 }
